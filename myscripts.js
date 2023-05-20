@@ -7,6 +7,7 @@ reset.addEventListener("click", resetGrid);
 document.querySelector("#black").addEventListener("click", () => paintType = "black");
 document.querySelector("#rainbow").addEventListener("click", () => paintType = "rainbow");
 document.querySelector("#grayscale").addEventListener("click", () => paintType = "grayscale");
+document.querySelector("#eraser").addEventListener("click", () => paintType = "eraser");
 
 function createGrid(size) {
     for (let i=0; i<size**2; i++) {
@@ -29,8 +30,15 @@ function setSquareColor(color) {
         case "rainbow":
             return `rgb(${[...randomRGB()]})`;
         case "grayscale":
-            console.log(color);
-            return ;
+            if (color === "rgb(5, 5, 5)") return;
+            let rgbArr = color.match(/\d{1,3}/g);
+            if (!rgbArr) {return "rgb(230, 230, 230)"};
+            if (rgbArr.every(e => (e - 5) % 25 === 0)) {
+                return `rgb(${[...rgbArr.map(e => e - 25)]})`
+            }
+            return "rgb(230, 230, 230)";
+        case "eraser":
+            return "white";
     }
 }
 

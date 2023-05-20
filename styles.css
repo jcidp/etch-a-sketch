@@ -9,6 +9,7 @@ body {
     justify-content: space-between;
     font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
+    background-color: darkslategray;
 }
 
 main {
@@ -64,13 +65,13 @@ button:hover {
 .square {
     box-sizing: border-box;
     aspect-ratio: 1;
-    background-color: gray;
+    background-color: white;
 /*     border: solid 1px white;
  */}
 
  footer {
     text-align: center;
-    background-color: darkslategrey;
+    background-color: navy;
     color: whitesmoke;
  }
 
