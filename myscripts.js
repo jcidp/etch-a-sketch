@@ -4,10 +4,17 @@ let paintType = "black";
 
 let reset = document.querySelector("#reset");
 reset.addEventListener("click", resetGrid);
-document.querySelector("#black").addEventListener("click", () => paintType = "black");
-document.querySelector("#rainbow").addEventListener("click", () => paintType = "rainbow");
-document.querySelector("#grayscale").addEventListener("click", () => paintType = "grayscale");
-document.querySelector("#eraser").addEventListener("click", () => paintType = "eraser");
+document.querySelector("#black").addEventListener("click", selectButton);
+document.querySelector("#rainbow").addEventListener("click", selectButton);
+document.querySelector("#grayscale").addEventListener("click", selectButton);
+document.querySelector("#eraser").addEventListener("click", selectButton);
+
+function selectButton(e) {
+    console.log(e.target.id);
+    paintType = e.target.id;
+    document.querySelectorAll("button").forEach(btn => btn.style.border = "none");
+    e.target.style.border = "2px solid";
+}
 
 function createGrid(size) {
     for (let i=0; i<size**2; i++) {
