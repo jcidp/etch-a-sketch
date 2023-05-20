@@ -1,0 +1,25 @@
+html {
+    color-scheme: light dark;
+}
+
+/*main {
+    width: min(70ch, 100% - 4rem);
+    margin-inline: auto;
+}*/
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    /*gap: 5px;
+    height: 100vh;
+    /*align-items: center;*/
+}
+
+.square {
+    /*height: 40px;*/
+    box-sizing: border-box;
+    aspect-ratio: 1;
+    background-color: gray;
+    flex: 1 1 6.25%;
+    border: solid 1px white;
+}
