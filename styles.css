@@ -12,7 +12,7 @@ body {
 }
 
 main {
-    flex: 1 1 auto; /*Not working*/
+    flex: 1 1 auto;
     width: min(70ch, 100% - 4rem);
     margin-inline: auto; 
 }
