@@ -1,8 +1,12 @@
 let container = document.querySelector(".container");
 createGrid(16);
+let paintType = "black";
 
-let btn = document.querySelector("button");
-btn.addEventListener("click", resetGrid);
+let reset = document.querySelector("#reset");
+reset.addEventListener("click", resetGrid);
+document.querySelector("#black").addEventListener("click", () => paintType = "black");
+document.querySelector("#rainbow").addEventListener("click", () => paintType = "rainbow");
+document.querySelector("#grayscale").addEventListener("click", () => paintType = "grayscale");
 
 function createGrid(size) {
     for (let i=0; i<size**2; i++) {
@@ -11,9 +15,22 @@ function createGrid(size) {
         square.style.flexBasis = `${1/size*100}%`;
         square.style.height = `${1/size*100}%`;
         square.addEventListener("mouseover", e => {
-            e.target.style.backgroundColor = "blue";
+            //e.target.style.backgroundColor = "blue";
+            e.target.style.backgroundColor = setSquareColor(e.target.style.backgroundColor);
         })
         container.append(square);
+    }
+}
+
+function setSquareColor(color) {
+    switch (paintType) {
+        case "black":
+            return "black";
+        case "rainbow":
+            return `rgb(${[...randomRGB()]})`;
+        case "grayscale":
+            console.log(color);
+            return ;
     }
 }
 
@@ -23,4 +40,8 @@ function resetGrid() {
         document.querySelectorAll(".square").forEach(square => square.remove());
         createGrid(new_size);
     }
+}
+
+function randomRGB() {
+    return [1, 2, 3].map(e => e = Math.floor(Math.random() * 256));
 }
